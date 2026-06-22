@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valencia 2026 — Trip Planner</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* === NEW: Activity images === */
+.act-img {
+  width: 100%; height: 160px; object-fit: cover; border-radius: 12px;
+  margin-bottom: 12px; background: linear-gradient(135deg, #e8e0d5, #f0e8d8);
+}
+.act-img-placeholder {
+  width: 100%; height: 100px; border-radius: 12px; margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+}
+/* === NEW: Expandable nearby section === */
+.nearby-section {
+  margin-top: -4px; margin-bottom: 12px; padding: 10px 14px;
+  background: linear-gradient(135deg, #fffdf5, #fef9e7);
+  border-radius: 0 0 var(--radius) var(--radius);
+  border: 1px solid var(--gold); border-top: none;
+  animation: fadeIn 0.3s ease;
+}
+.nearby-section .nearby-title {
+  font-size: 0.82rem; font-weight: 700; color: var(--gold); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.nearby-item {
+  display: flex; align-items: center; gap: 8px; padding: 6px 0;
+  font-size: 0.82rem; border-bottom: 1px dashed rgba(0,0,0,0.06);
+  cursor: pointer; transition: background 0.15s;
+}
+.nearby-item:hover { background: rgba(212,168,67,0.08); border-radius: 6px; padding-left: 6px; }
+.nearby-item:last-child { border-bottom: none; }
+.nearby-item .nearby-name { flex: 1; font-weight: 500; }
+.nearby-item .nearby-stars { color: var(--gold); font-weight: 700; font-size: 0.75rem; white-space: nowrap; }
+.nearby-item .nearby-dist { font-size: 0.75rem; color: var(--text-light); white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.nearby-item .nearby-type { font-size: 0.72rem; color: var(--text-light); }
+/* === NEW: Expand button === */
+.expand-hint {
+  font-size: 0.75rem; color: var(--med-blue); cursor: pointer;
+  display: flex; align-items: center; gap: 4px; margin-top: 8px;
+  font-weight: 500; user-select: none;
+}
+.expand-hint:hover { color: var(--terracotta); }
+.expand-hint .arrow { transition: transform 0.2s; font-size: 0.7rem; }
+.expand-hint.expanded .arrow { transform: rotate(180deg); }
+/* === NEW: Distance badge on overview cards === */
+.day-dist { font-size: 0.75rem; color: var(--med-blue); margin-top: 4px; font-weight: 500; }
+/* === NEW: Maps link === */
+.maps-link {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem;
+  color: var(--med-blue); text-decoration: none; margin-left: 8px;
+  font-weight: 500; cursor: pointer;
+}
+.maps-link:hover { color: var(--terracotta); text-decoration: underline; }
+/* === General card clickable indicator === */
+.activity-card.main-card { cursor: pointer; }
+.activity-card.main-card:hover { border-left-width: 5px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>🇪🇸 Valencia 2026</h1>
+  <p class="hero-sub" id="hero-sub"></p>
+  <div class="hero-stats" id="hero-stats"></div>
+</header>
+
+<!-- TABS -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('overview')">📋 Programma</button>
+  <button class="tab-btn" onclick="showTab('zilan')">⭐ Zilan's Favorieten</button>
+</div>
+
+<!-- DAY NAV -->
+<nav class="day-nav" id="day-nav"></nav>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="setFilter('all')">Alles</button>
+  <button class="filter-btn" onclick="setFilter('strand')">🏖 Strand</button>
+  <button class="filter-btn" onclick="setFilter('eten')">🍽 Eten</button>
+  <button class="filter-btn" onclick="setFilter('cultuur')">🏛 Cultuur</button>
+  <button class="filter-btn" onclick="setFilter('buiten')">🌿 Buiten</button>
+  <button class="filter-btn" onclick="setFilter('uitgaan')">🎉 Uitgaan</button>
+  <button class="filter-btn" onclick="setFilter('shoppen')">🛍 Shoppen</button>
+  <input type="text" class="search-box" placeholder="🔍 Zoeken..." oninput="setSearch(this.value)">
+</div>
+
+<main id="content"></main>
+
+<footer>🏖 Valencia · 6–13 juli 2026 · La Cabanyal · Ismael, Mike, Zil & Gez</footer>
+
+</body>
+</html>
