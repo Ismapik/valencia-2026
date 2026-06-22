@@ -1,0 +1,9 @@
+{
+  "source": "Zilan's Google Maps Favourites",
+  "total": 131,
+  "places": [
+    {"name":"Casa Montaña","type":"Tapas","rating":4.6,"reviews":5989,"area":"La Cabanyal","category":"eten"},
+    {"name":"Arrosseria Flor de València","type":"Mediterraans","rating":4.6,"reviews":2702,"area":"La Cabanyal","category":"eten","note":"Paella?"},
+    {"name":"Cult Café","type":"Koffiebar","rating":4.8,"reviews":1421,"area":"El Carmen","category":"koffie"}
+  ]
+}
